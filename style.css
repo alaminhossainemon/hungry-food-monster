@@ -1,0 +1,35 @@
+.foodInfo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 500px;
+    margin: 0px 400px;
+}
+.foodInfo input {
+    width: 800px;
+}
+.foodList{
+    width: 500px;
+    border: 1px solid black;
+    border-radius: 20px;
+    padding: 30px 40px;
+    margin: 0px 500px;
+
+}
+.foodList img{
+    width: 100%;
+
+}
+.foodResult{
+    width: 800px;
+    border: 1px solid black;
+    border-radius: 20px;
+    padding: 30px 40px;
+    margin: 0px 500px;
+    
+}
+
+.foodResult img{
+    width: 100%;
+
+}
