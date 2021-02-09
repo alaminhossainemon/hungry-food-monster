@@ -5,23 +5,25 @@
             .then(data => {
                 displayFoods(data.meals);
             });
-
-        const displayFoods = foods => {
-            const foodsDiv = document.getElementById('foods');
-                foods.forEach(food => {
-                    const foodDiv = document.createElement('div');
-                         foodDiv.className = 'foodList';
-                    const foodInfo = `
-                            <div onclick="displayDetails('${food.idMeal}')">
-                            <img src="${food.strMealThumb}">
-                            <h3>${food.strMeal}</h3>
-                            </div>
+            
+            const displayFoods = foods => {
+                const foodsDiv = document.getElementById('foods');
+                    foods.forEach(food => {
+                        const foodDiv = document.createElement('div');
+                            foodDiv.className = 'foodList';
+                        const foodInfo = `
+                                <div onclick="displayDetails('${food.idMeal}')">
+                                <img src="${food.strMealThumb}">
+                                <h3>${food.strMeal}</h3>
+                                </div>
                         `;
                     foodDiv.innerHTML = foodInfo;
                     foodsDiv.appendChild(foodDiv);
                 });
             
         };
+        
+       
     }
 
     const displayDetails = name => {
@@ -30,7 +32,6 @@
             .then(res => res.json())
             .then(data => {
                 renderFoodInfo(data.meals[0]);
-                console.log(data.meals[0]);
             });
     };
 
@@ -49,13 +50,28 @@
                 <li> ${food.strIngredient3}</li>
                 <li> ${food.strIngredient4}</li>
                 <li> ${food.strIngredient5}</li>
+                <li> ${food.strIngredient6}</li>
+                <li> ${food.strIngredient7}</li>
+                <li> ${food.strIngredient8}</li>
+                <li> ${food.strIngredient9}</li>
+                <li> ${food.strIngredient10}</li>
             </ul>
         </div>
     `;
     };
 
+    const foodContainer = document.getElementById('foods');
     const searchBtn = document.getElementById('searchBtn');
+    const warning = document.getElementById('warning');
+
     searchBtn.addEventListener('click', function () {
         const foodName = document.getElementById('foodName').value;
-        getFoodItem(foodName);
+        foodContainer.innerHTML = '';
+        if (foodName === '' ) {
+            warning.style.display = 'block';
+        } else {
+            getFoodItem(foodName);
+            warning.style.display = 'none';
+        }
     });
+        
