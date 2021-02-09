@@ -8,6 +8,7 @@
             
             const displayFoods = foods => {
                 const foodsDiv = document.getElementById('foods');
+                if (foods != null) {
                     foods.forEach(food => {
                         const foodDiv = document.createElement('div');
                             foodDiv.className = 'foodList';
@@ -20,7 +21,9 @@
                     foodDiv.innerHTML = foodInfo;
                     foodsDiv.appendChild(foodDiv);
                 });
-            
+            } else {
+                warning.style.display = 'block';
+            }
         };
         
        
