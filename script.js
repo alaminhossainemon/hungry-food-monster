@@ -2,9 +2,9 @@
         const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${mealId}`;
         fetch(url)
             .then(res => res.json())
-            .then(data => {
-                displayFoods(data.meals);
-            });
+            .then(data => displayFoods(data.meals));
+                
+            
             
             const displayFoods = foods => {
                 const foodsDiv = document.getElementById('foods');
@@ -25,14 +25,28 @@
         
        
     }
+            const foodContainer = document.getElementById('foods');
+            const searchBtn = document.getElementById('searchBtn');
+            const warning = document.getElementById('warning');
+
+            searchBtn.addEventListener('click', function () {
+                const foodName = document.getElementById('foodName').value;
+                foodContainer.innerHTML = '';
+                if (foodName === '' ) {
+                    warning.style.display = 'block';
+                } else {
+                    getFoodItem(foodName);
+                    warning.style.display = 'none';
+                }
+            });
+        
 
     const displayDetails = name => {
         const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${name}`;
         fetch(url)
             .then(res => res.json())
-            .then(data => {
-                renderFoodInfo(data.meals[0]);
-            });
+            .then(data => renderFoodInfo(data.meals[0]));
+                
     };
 
     const renderFoodInfo = food => {
@@ -60,18 +74,18 @@
     `;
     };
 
-    const foodContainer = document.getElementById('foods');
-    const searchBtn = document.getElementById('searchBtn');
-    const warning = document.getElementById('warning');
+    // const foodContainer = document.getElementById('foods');
+    // const searchBtn = document.getElementById('searchBtn');
+    // const warning = document.getElementById('warning');
 
-    searchBtn.addEventListener('click', function () {
-        const foodName = document.getElementById('foodName').value;
-        foodContainer.innerHTML = '';
-        if (foodName === '' ) {
-            warning.style.display = 'block';
-        } else {
-            getFoodItem(foodName);
-            warning.style.display = 'none';
-        }
-    });
+    // searchBtn.addEventListener('click', function () {
+    //     const foodName = document.getElementById('foodName').value;
+    //     foodContainer.innerHTML = '';
+    //     if (foodName === '' ) {
+    //         warning.style.display = 'block';
+    //     } else {
+    //         getFoodItem(foodName);
+    //         warning.style.display = 'none';
+    //     }
+    // });
         
